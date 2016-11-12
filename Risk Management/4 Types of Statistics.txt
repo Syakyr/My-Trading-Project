@@ -1,0 +1,33 @@
+1. Updraw
+   - Measures how close price came to the TP level
+   - <75%  --> didn't hit TP (losing trades), too optimistic
+   - >125% --> prices have run more than TP level (winning trades),
+               too pessimistic
+   - Updraw = (Highest Price - EP)/(TP - EP)   (for long trades)
+   - Calculated on the spot when losing, after TP level hits twice
+     when winning.
+2. Drawdown
+   - Measures how close price came to the SL level
+   - <50%  --> SL is too wide (winning trades), too pessimistic
+   - >125% --> SL is too small, or the trade is bad (losing trades)
+   - Updraw = (EP - Lowest Price)/(EP - SL)   (for long trades)
+   - Calculated on the spot when winning, after SL level hits twice
+     when losing.
+3. Maximum Adverse Excursion (MAE)
+   - Measures how much price has moved against the trade
+   - MAE = EP - Lowest Price (for long trades)
+   - Calculated on the spot when winning, after SL level hits twice
+     when losing.
+4. Maximum Favourable Excursion (MFE)
+   - Measures how much price has moved beyond the trade
+   - MFE = Highest Price - EP (for long trades)
+   - Calculated on the spot when losing, after TP level hits twice
+     when winning.
+
+
+//+------------------+
+//| Questions to Ask |
+//+------------------+
+
+- How do you code it out to optimise trades to minimise these values
+  by lowering risk and increasing reward?
