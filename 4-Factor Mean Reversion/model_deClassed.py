@@ -433,7 +433,7 @@ def simulate_transactions():
 
 # Initialize
 _files = []
-_dir = "./CSV Data/"
+_dir = "./quotes/"
 _data = {}
 _daily_quotes = {}
 _daily_coeffs = {}
