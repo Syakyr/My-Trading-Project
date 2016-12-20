@@ -22,7 +22,7 @@ class Model:
 	def __init__(self):
 
 		self._files = []
-		self._dir = "./CSV Data/"
+		self._dir = "./Quotes2/"
 		self._data = {}
 		self._daily_quotes = {}
 		self._daily_coeffs = {}

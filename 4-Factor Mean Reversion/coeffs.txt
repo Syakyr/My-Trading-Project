@@ -1,0 +1,1 @@
+Date		int	prc	mom	hlv	vol	R^2	s_size

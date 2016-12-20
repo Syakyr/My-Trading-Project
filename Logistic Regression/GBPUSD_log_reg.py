@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 from sklearn.utils import shuffle
 
 # Set Variable
-TimePeriod = 30
-Threshold = 50
+TimePeriod = 100
+Threshold = 25
 
 # Returns X, YBuy, YSell
 def get_data():
@@ -84,7 +84,7 @@ trainSell_costs = []
 testSell_costs  = []
 learning_rate = 0.001
 
-print("i\tBuy Train\tBuy Test\tSell Train\tSell Test")
+# print("i\tBuy Train\tBuy Test\tSell Train\tSell Test")
 
 for i in range(20):
 

@@ -2,22 +2,25 @@ import pandas as pd
 import urllib.request
 import os
 
+CompanyListDir = "CompanyList3" # Company List Directory
+QuoteDir = "quotes" # Quotes Directory
+
 # current working directory
 sys_cwd = os.path.dirname(os.path.realpath(__file__))
 
 # url for company list csv file (from nasdaq.com)
 src_url = {
-    "AMEX": "http://www.nasdaq.com/screening/companies-by-name.aspx?letter=0&exchange=amex&render=download",
+    # "AMEX": "http://www.nasdaq.com/screening/companies-by-name.aspx?letter=0&exchange=amex&render=download",
     "NASDAQ": "http://www.nasdaq.com/screening/companies-by-name.aspx?letter=0&exchange=nasdaq&render=download",
-    "NYSE": "http://www.nasdaq.com/screening/companies-by-name.aspx?letter=0&exchange=nyse&render=download",
+    # "NYSE": "http://www.nasdaq.com/screening/companies-by-name.aspx?letter=0&exchange=nyse&render=download",
 }
 
 # update company list using the urls in src_url dictionary, saving csv files into companylist folder
 def get_company_list() -> object:
-    if not os.path.exists("./companylist/"):
-        os.makedirs("./companylist/")
+    if not os.path.exists("./" + CompanyListDir + "/"):
+        os.makedirs("./" + CompanyListDir + "/")
     for url in src_url:
-        f_name = sys_cwd + "/companylist/" + url + ".csv"
+        f_name = sys_cwd + "/" + CompanyListDir + "/" + url + ".csv"
         f_url = src_url[url]
         with urllib.request.urlopen(f_url) as response, open(f_name, 'wb') as out_file:
             out_file.write(response.read())
@@ -25,9 +28,9 @@ def get_company_list() -> object:
 
 # retrieve historical quotes csv file from the company given its symbol, from yahoo finance.
 def get_quotes(symbol, silent=False, no_override=True):
-    if not os.path.exists("./quotes/"):
-        os.makedirs("./quotes/")
-    f_name = sys_cwd + "/quotes/" + symbol + ".csv"
+    if not os.path.exists("./"+QuoteDir+"/"):
+        os.makedirs("./"+QuoteDir+"/")
+    f_name = sys_cwd + "/"+QuoteDir+"/" + symbol + ".csv"
     if os.path.exists(f_name) and no_override:
         return True
     f_url = "http://chart.finance.yahoo.com/table.csv?s=" + symbol + "&a=0&b=1&c=2013&d=11&e=31&f=2099&g=d&ignore=.csv"
@@ -47,7 +50,7 @@ def get_all_quotes(exchange):
     if exchange not in src_url:
         print("unsupported exchange %s"%(exchange))
         return False
-    f_name = sys_cwd + "/companylist/" + exchange + ".csv"
+    f_name = sys_cwd + "/" + CompanyListDir + "/" + exchange + ".csv"
     stock_data = pd.read_csv(f_name)
     count, count_succ, count_compl = len(stock_data["Symbol"]), 0, 0
     for sym in stock_data["Symbol"]:
