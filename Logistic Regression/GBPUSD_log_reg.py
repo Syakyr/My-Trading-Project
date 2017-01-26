@@ -6,11 +6,12 @@ from sklearn.utils import shuffle
 # Set Variable
 TimePeriod = 100
 Threshold = 25
+csvfile = 'GBPUSD-1-1-16-11-30-16H1.csv'
 
 # Returns X, YBuy, YSell
 def get_data():
     # Truncates the CSV to the timestamp, the pip distance and the binary 'output' Buy or Sell
-    df = pd.read_csv('GBPUSD-1-1-16-11-30-16H1.csv')
+    df = pd.read_csv(csvfile)
     df['Timestamp'] = pd.to_datetime(df['Date'].map(str) + df['Timestamp'], format='%Y%m%d%H:%M:%S')
     df['PipDist'] = df.apply(lambda row: int((row['Close'] - row['Open']) * 100000), axis=1)
     df['Buy'] = df.apply(lambda row: int(row['PipDist'] > Threshold), axis=1)
