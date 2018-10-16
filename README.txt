@@ -1,4 +1,13 @@
 //+------------------------------------------------------------------+
+//| Notice                                                           |
+//+------------------------------------------------------------------+
+
+I have moved the repository here:
+https://gitlab.com/AmadeusAlgo/ForexTradeGroup
+
+Any future updates would be pushed there instead.
+
+//+------------------------------------------------------------------+
 //|                                        The Road to the Champions |
 //|                                                   Copyright 2016 |
 //|                                                         Hitlaris |
